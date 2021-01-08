@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.sendersms.R;
 
-public class EntradaActivity extends AppCompatActivity {
+public class DetalleKardexActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
