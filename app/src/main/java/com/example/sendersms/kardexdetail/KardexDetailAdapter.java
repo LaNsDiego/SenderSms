@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sendersms.R;
+import com.example.sendersms.kardex.KardexModel;
 
 import java.util.List;
 import java.util.zip.Inflater;

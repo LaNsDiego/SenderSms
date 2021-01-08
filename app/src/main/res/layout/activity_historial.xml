@@ -8,25 +8,33 @@
     tools:context=".views.HistorialActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:elevation="0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
+        <com.google.android.material.appbar.AppBarLayout
+            android:elevation="0dp"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="@string/page_title_historial_detail_kardex"
-            app:menu="@menu/menu_kardex"
-            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
-            >
+            android:layout_height="wrap_content">
+            <com.google.android.material.appbar.MaterialToolbar
+                android:background="@color/primaryColor"
+                android:id="@+id/topAppBar"
+                android:elevation="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="@string/page_title_historial_detail_kardex"
+                app:menu="@menu/menu_kardex"
+                app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                >
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tie_search_detail_kardex"
                     android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Buscar"/>
-        </com.google.android.material.appbar.MaterialToolbar>
+            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.AppBarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -35,43 +43,135 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_filters"
+            android:background="@color/primaryColor"
+            android:animateLayoutChanges="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cgr_filters_detail_kardex"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entrada" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Salida" />
+            </com.google.android.material.chip.ChipGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <com.google.android.material.card.MaterialCardView
+            android:padding="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="12dp"
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
-                        android:text="Periodo : 2020 - I"/>
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
 
-                    <TextView
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:text="Periodo : "/>
+                        <TextView
+                            android:layout_marginRight="16dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" 2020 - I"/>
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ruc  : 10789456127"/>
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:text="RUC : "/>
+                        <TextView
+                            android:layout_marginRight="16dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="10987654217"/>
+                    </LinearLayout>
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Razon Social  : Bitel S.A.D."/>
-                <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Descripción : Una descripción corta."/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cod. Unidad de Med. : Kg"/>
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        android:text="Razon Social : "/>
+                    <TextView
+                        android:layout_marginRight="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text=" Bitel SA"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        android:text="Descripción : "/>
+                    <TextView
+                        android:layout_marginRight="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text=" Smarthphone"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        android:text="Cod. Unidad de Med. : "/>
+                    <TextView
+                        android:layout_marginRight="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text=" Unidad"/>
+                </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -84,27 +184,6 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_margin="4dp"
-                    android:paddingVertical="6dp"
-                    android:paddingHorizontal="18dp"
-                    android:background="@drawable/rounded_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Escriba un mensaje ..."/>
-
-                <com.google.android.material.chip.ChipGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Entrada"/>
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Salida"/>
-                </com.google.android.material.chip.ChipGroup>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview_kardex_detail"
                 android:scrollbars="vertical"

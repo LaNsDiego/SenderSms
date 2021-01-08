@@ -21,6 +21,9 @@ import androidx.fragment.app.Fragment;
 
 import 	android.telephony.SmsManager;
 
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -31,7 +34,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.InputStream;
 import java.util.Iterator;
 
-public class FirstFragment extends Fragment {
+public class CampainFragment extends Fragment {
 
     static {
         System.setProperty(
@@ -61,25 +64,24 @@ public class FirstFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false);
+        return inflater.inflate(R.layout.fragment_campain, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         textView = view.findViewById(R.id.textview);
-        edtPhoneNumber = view.findViewById(R.id.edt_phone_number);
         edtMessage =  view.findViewById(R.id.edt_message);
-        Button btnCargarXlsx = view.findViewById(R.id.btn_cargar_xlsx);
-        view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
+        ExtendedFloatingActionButton fabCargarArchivo = view.findViewById(R.id.fab_cargar_archivo);
+        view.findViewById(R.id.btn_send_campain).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                NavHostFragment.findNavController(FirstFragment.this)
+//                NavHostFragment.findNavController(CampainFragment.this)
 //                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
                 smsSendMessage(edtPhoneNumber.getText().toString() , edtMessage.getText().toString());
             }
         });
-        btnCargarXlsx.setOnClickListener(new View.OnClickListener() {
+        fabCargarArchivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -89,6 +91,7 @@ public class FirstFragment extends Fragment {
             }
         });
         checkPermission();
+
     }
 
 

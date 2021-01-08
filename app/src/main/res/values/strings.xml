@@ -10,4 +10,15 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="page_title_historial_detail_kardex">Kardex</string>
+    <string name="nav_header_desc">descripcion</string>
+    <string name="nav_header_title">titulo header</string>
+    <string name="nav_header_subtitle">subtitle header</string>
+    <string name="menu_home">inicio</string>
+    <string name="menu_kardex">kardex</string>
+    <string name="menu_campain">campañas</string>
+    <string name="menu_logout">cerrar sesión</string>
+    <string name="campain_title">Campaña</string>
+    <string name="kardex_title">Kardex</string>
+    <string name="btn_send_campain">Enviar campaña</string>
+    <string name="label_recycler_empty">No se encontraron elementos.</string>
 </resources>
