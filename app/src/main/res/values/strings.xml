@@ -21,4 +21,8 @@
     <string name="kardex_title">Kardex</string>
     <string name="btn_send_campain">Enviar campaña</string>
     <string name="label_recycler_empty">No se encontraron elementos.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="point_title">Mapa Puntos</string>
+    <string name="menu_map_point">Mapa</string>
 </resources>

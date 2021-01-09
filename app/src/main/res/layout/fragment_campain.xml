@@ -35,6 +35,12 @@
             app:iconGravity="textEnd"
             app:icon="@drawable/ic_baseline_send_24"
             android:text="@string/btn_send_campain"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_contact"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"/>
     </LinearLayout>
 
 

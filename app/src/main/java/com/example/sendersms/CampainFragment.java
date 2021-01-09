@@ -18,9 +18,16 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import 	android.telephony.SmsManager;
 
+import com.example.sendersms.contact.ContactAdapter;
+import com.example.sendersms.contact.ContactModel;
+import com.example.sendersms.kardex.KardexAdapter;
+import com.example.sendersms.kardex.KardexModel;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -32,7 +39,9 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class CampainFragment extends Fragment {
 
@@ -56,6 +65,7 @@ public class CampainFragment extends Fragment {
     private TextView textView;
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 100;
     private static final String TAG = "FF";
+    private View root;
     EditText edtPhoneNumber , edtMessage;
     Uri uriXlsx;
     @Override
@@ -64,16 +74,11 @@ public class CampainFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_campain, container, false);
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        textView = view.findViewById(R.id.textview);
-        edtMessage =  view.findViewById(R.id.edt_message);
-        ExtendedFloatingActionButton fabCargarArchivo = view.findViewById(R.id.fab_cargar_archivo);
-        view.findViewById(R.id.btn_send_campain).setOnClickListener(new View.OnClickListener() {
+        root = inflater.inflate(R.layout.fragment_campain, container, false);
+        textView = root.findViewById(R.id.textview);
+        edtMessage =  root.findViewById(R.id.edt_message);
+        ExtendedFloatingActionButton fabCargarArchivo = root.findViewById(R.id.fab_cargar_archivo);
+        root.findViewById(R.id.btn_send_campain).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                NavHostFragment.findNavController(CampainFragment.this)
@@ -81,6 +86,27 @@ public class CampainFragment extends Fragment {
                 smsSendMessage(edtPhoneNumber.getText().toString() , edtMessage.getText().toString());
             }
         });
+
+        List<ContactModel> listContact;
+        listContact = new ArrayList<>();
+        listContact.add(new ContactModel());
+        listContact.add(new ContactModel());
+        listContact.add(new ContactModel());
+        listContact.add(new ContactModel());
+        listContact.add(new ContactModel());
+        listContact.add(new ContactModel());
+        ContactAdapter adapterContact = new ContactAdapter(listContact);
+
+
+        RecyclerView recyclerContact = root.findViewById(R.id.recycler_contact);
+        LinearLayoutManager llms = new LinearLayoutManager(getContext());
+        llms.setOrientation(LinearLayoutManager.VERTICAL);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerContact.getContext(),
+                llms.getOrientation());
+        recyclerContact.addItemDecoration(dividerItemDecoration);
+        recyclerContact.setLayoutManager(llms);
+        recyclerContact.setAdapter(adapterContact);
+
         fabCargarArchivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,13 +117,12 @@ public class CampainFragment extends Fragment {
             }
         });
         checkPermission();
-
+        return root;
     }
 
 
+
     protected void checkPermission() {
-
-
         if (ContextCompat.checkSelfPermission(getContext(),
                 Manifest.permission.SEND_SMS)
                 != PackageManager.PERMISSION_GRANTED) {

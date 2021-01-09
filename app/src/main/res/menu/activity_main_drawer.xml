@@ -12,6 +12,10 @@
             android:id="@+id/nav_campain"
             android:icon="@drawable/ic_baseline_receipt_24"
             android:title="@string/menu_campain" />
+        <item
+            android:id="@+id/nav_point"
+            android:icon="@drawable/ic_baseline_receipt_24"
+            android:title="@string/menu_map_point" />
     </group>
     <item android:title="Communicate">
         <menu>

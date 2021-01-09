@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_kardex, R.id.nav_campain,R.id.nav_logout
+                R.id.nav_point,R.id.nav_kardex, R.id.nav_campain,R.id.nav_logout
         )
                 .setDrawerLayout(drawer)
                 .build();

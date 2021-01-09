@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/nav_kardex">
+    app:startDestination="@id/nav_campain">
 
     <fragment
         android:id="@+id/nav_campain"
@@ -22,7 +22,17 @@
         tools:layout="@layout/fragment_kardex">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_kardex_to_point"
+            app:destination="@id/nav_campain" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_point"
+        android:name="com.example.sendersms.views.PointOfSaleFragment"
+        android:label="@string/point_title"
+        tools:layout="@layout/fragment_point_of_sale">
+        <action
+            android:id="@+id/action_point_to_campain"
             app:destination="@id/nav_campain" />
     </fragment>
 </navigation>
