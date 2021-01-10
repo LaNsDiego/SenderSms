@@ -25,4 +25,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="point_title">Mapa Puntos</string>
     <string name="menu_map_point">Mapa</string>
+    <string name="new_kardex_title">Nuevo Kardex</string>
+    <string name="detail_kardex_title">Movimientos</string>
+    <string name="menu_sell">Catalogo</string>
+    <string name="sell_title">Catalogo</string>
 </resources>

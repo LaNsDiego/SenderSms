@@ -14,9 +14,10 @@ import java.util.List;
 public class KardexAdapter extends RecyclerView.Adapter<KardexHolder> {
 
     List<KardexModel> listKardex;
-
-    public KardexAdapter(List<KardexModel> listKardex) {
+    KardexInterface.KardexItemListener listener;
+    public KardexAdapter(List<KardexModel> listKardex ,KardexInterface.KardexItemListener listener ) {
         this.listKardex = listKardex;
+        this.listener = listener;
     }
 
     @NonNull
@@ -28,7 +29,13 @@ public class KardexAdapter extends RecyclerView.Adapter<KardexHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull KardexHolder holder, int position) {
-
+        final KardexModel objKardex = listKardex.get(position);
+        holder.itemKardex.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onClickItemKardex(objKardex);
+            }
+        });
     }
 
     @Override

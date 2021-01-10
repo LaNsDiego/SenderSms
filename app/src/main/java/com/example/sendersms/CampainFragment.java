@@ -26,6 +26,7 @@ import 	android.telephony.SmsManager;
 
 import com.example.sendersms.contact.ContactAdapter;
 import com.example.sendersms.contact.ContactModel;
+import com.example.sendersms.helpers.RecyclerBuilder;
 import com.example.sendersms.kardex.KardexAdapter;
 import com.example.sendersms.kardex.KardexModel;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -96,16 +97,8 @@ public class CampainFragment extends Fragment {
         listContact.add(new ContactModel());
         listContact.add(new ContactModel());
         ContactAdapter adapterContact = new ContactAdapter(listContact);
-
-
         RecyclerView recyclerContact = root.findViewById(R.id.recycler_contact);
-        LinearLayoutManager llms = new LinearLayoutManager(getContext());
-        llms.setOrientation(LinearLayoutManager.VERTICAL);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerContact.getContext(),
-                llms.getOrientation());
-        recyclerContact.addItemDecoration(dividerItemDecoration);
-        recyclerContact.setLayoutManager(llms);
-        recyclerContact.setAdapter(adapterContact);
+        RecyclerBuilder.build(recyclerContact,adapterContact);
 
         fabCargarArchivo.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -17,13 +17,24 @@
     </fragment>
     <fragment
         android:id="@+id/nav_kardex"
-        android:name="com.example.sendersms.KardexFragment"
+        android:name="com.example.sendersms.views.kardex.KardexFragment"
         android:label="@string/kardex_title"
         tools:layout="@layout/fragment_kardex">
 
         <action
-            android:id="@+id/action_kardex_to_point"
-            app:destination="@id/nav_campain" />
+            android:id="@+id/action_kardex_to_new_kardex"
+            app:popUpTo="@+id/nav_new_kardex"
+            app:popUpToInclusive="true"
+            app:destination="@id/nav_new_kardex" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_new_kardex"
+        android:name="com.example.sendersms.views.kardex.NewKardexFragment"
+        android:label="@string/new_kardex_title"
+        tools:layout="@layout/fragment_new_kardex">
+<!--        <action-->
+<!--            android:id="@+id/action_kardex_to_new_kardex"-->
+<!--            app:destination="@id/nav_kardex" />-->
     </fragment>
 
     <fragment
@@ -34,5 +45,21 @@
         <action
             android:id="@+id/action_point_to_campain"
             app:destination="@id/nav_campain" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detail_kardex"
+        android:name="com.example.sendersms.views.kardex.DetailKardexFragment"
+        android:label="@string/detail_kardex_title"
+        tools:layout="@layout/fragment_detail_kardex">
+        <action
+            android:id="@+id/action_detail_kardex_to_kardex"
+            app:destination="@id/nav_kardex" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_sell"
+        android:name="com.example.sendersms.views.sell.SellFragment"
+        android:label="@string/sell_title"
+        tools:layout="@layout/fragment_sell">
     </fragment>
 </navigation>
