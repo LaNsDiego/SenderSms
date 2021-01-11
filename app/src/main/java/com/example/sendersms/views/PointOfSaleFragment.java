@@ -9,16 +9,23 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GestureDetectorCompat;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.transition.Transition;
 import androidx.transition.TransitionListenerAdapter;
 
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sendersms.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -34,6 +41,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.transition.MaterialContainerTransform;
 
 import java.io.IOException;
@@ -45,7 +54,9 @@ import java.util.Locale;
  * Use the {@link PointOfSaleFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PointOfSaleFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnCameraIdleListener {
+public class PointOfSaleFragment extends Fragment implements OnMapReadyCallback,
+        GoogleMap.OnMapClickListener,
+        GoogleMap.OnCameraIdleListener{
 
     private static final String TAG = "REGISTRO_UBICACION";
     //    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = ;
@@ -53,7 +64,7 @@ public class PointOfSaleFragment extends Fragment implements OnMapReadyCallback,
     private GoogleMap map;
     private Marker marker;
 
-
+    private GestureDetectorCompat mDetector;
     //ATRIBUTOS MAPA MI UBICACION
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private static final int DEFAULT_ZOOM = 15;
@@ -107,12 +118,54 @@ public class PointOfSaleFragment extends Fragment implements OnMapReadyCallback,
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    BottomSheetDialog bsdInfoPoinOfSale;
+    BottomSheetBehavior bshInfoPointOfSale;
+    TextView txvEstado;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View inflate = inflater.inflate(R.layout.fragment_point_of_sale, container, false);
-        // Inflate the layout for this fragment
+        txvEstado = inflate.findViewById(R.id.estado);
+        View viewBottmSheet = LayoutInflater.from(getContext()).inflate(R.layout.bottom_sheet_post_of_sale,null,false);
+        bsdInfoPoinOfSale = new BottomSheetDialog(getContext());
+        bsdInfoPoinOfSale.setContentView(viewBottmSheet);
+        bsdInfoPoinOfSale.setDismissWithAnimation(true);
+        bsdInfoPoinOfSale.setTitle("Titulo grande");
+        bshInfoPointOfSale = BottomSheetBehavior.from((View)viewBottmSheet.getParent());
+//        bsdInfoPoinOfSale.show();
+
+        bshInfoPointOfSale.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                switch (newState){
+                    case BottomSheetBehavior.STATE_EXPANDED:
+                        txvEstado.setText("STATE_EXPANDED");
+                        break;
+                    case BottomSheetBehavior.STATE_COLLAPSED:
+                        txvEstado.setText("STATE_COLLAPSED");
+                        break;
+                    case BottomSheetBehavior.STATE_HIDDEN:
+                        txvEstado.setText("STATE_HIDDEN");
+                        break;
+                    case BottomSheetBehavior.STATE_DRAGGING:
+                        txvEstado.setText("STATE_DRAGGING");
+                        break;
+                    case BottomSheetBehavior.STATE_HALF_EXPANDED:
+                        txvEstado.setText("STATE_HALF_EXPANDED");
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+            }
+        });
+
+//
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
@@ -146,6 +199,38 @@ public class PointOfSaleFragment extends Fragment implements OnMapReadyCallback,
         }
         /*map.setOnCameraIdleListener(this);*/
         marker = map.addMarker(new MarkerOptions().position(mDefaultLocation).title("Ubicación por defecto").draggable(true));
+        map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                String estado = "default";
+                switch (bshInfoPointOfSale.getState()){
+                    case BottomSheetBehavior.STATE_EXPANDED:
+                        estado = "STATE_EXPANDED";
+                        break;
+                    case BottomSheetBehavior.STATE_COLLAPSED:
+                        estado = "STATE_EXPANDED";
+                        break;
+                    case BottomSheetBehavior.STATE_HIDDEN:
+                        estado = "STATE_EXPANDED";
+                        break;
+                    case BottomSheetBehavior.STATE_DRAGGING:
+                        estado = "STATE_EXPANDED";
+                        break;
+                    case BottomSheetBehavior.STATE_HALF_EXPANDED:
+                        estado = "STATE_EXPANDED";
+                        break;
+
+                    default:
+                        break;
+                }
+                bshInfoPointOfSale.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                Toast.makeText(getContext(), estado, Toast.LENGTH_SHORT).show();
+                bsdInfoPoinOfSale.show();
+//                bshInfoPointOfSale.setState(BottomSheetBehavior.STATE_EXPANDED);
+
+                return true;
+            }
+        });
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(mDefaultLocation, 14f));
 //
 //        // Prompt the user for permission.
@@ -161,6 +246,7 @@ public class PointOfSaleFragment extends Fragment implements OnMapReadyCallback,
 
     @Override
     public void onMapClick(LatLng latLng) {
+        Toast.makeText(getContext(), "Click en una pos.", Toast.LENGTH_SHORT).show();
         map.addMarker(new MarkerOptions()
                 .position(latLng)
                 .icon(BitmapDescriptorFactory
@@ -326,6 +412,5 @@ public class PointOfSaleFragment extends Fragment implements OnMapReadyCallback,
                 Log.e("Exception: %s", e.getMessage());
             }
         }
-
 
 }

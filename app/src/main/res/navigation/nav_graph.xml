@@ -62,4 +62,11 @@
         android:label="@string/sell_title"
         tools:layout="@layout/fragment_sell">
     </fragment>
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_mi_id"-->
+<!--        android:name="com.example.sendersms.views.sell.mi_fragmento_java"-->
+<!--        android:label="titutlo de mi fragmento"-->
+<!--        tools:layout="@layout/mi_fragmento_xml">-->
+<!--    </fragment>-->
 </navigation>
