@@ -20,7 +20,7 @@
             app:counterMaxLength="120"
             android:hint="Mensaje de campaña">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_message"
+                android:id="@+id/tie_message_campain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>

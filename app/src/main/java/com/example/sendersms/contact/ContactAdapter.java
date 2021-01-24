@@ -13,10 +13,10 @@ import java.util.List;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactHolder> {
 
-    List<ContactModel> listKardex;
+    List<ContactModel> listContact;
 
-    public ContactAdapter(List<ContactModel> listKardex) {
-        this.listKardex = listKardex;
+    public ContactAdapter(List<ContactModel> listContact) {
+        this.listContact = listContact;
     }
 
     @NonNull
@@ -28,11 +28,12 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ContactHolder holder, int position) {
-
+        final ContactModel contactModel = listContact.get(position);
+        holder.txvPhoneNumber.setText(contactModel.getNumberPhone());
     }
 
     @Override
     public int getItemCount() {
-        return listKardex.size();
+        return listContact.size();
     }
 }

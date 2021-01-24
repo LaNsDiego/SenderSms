@@ -51,32 +51,33 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(String email , String password){
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password)
-                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        goToMainActivity();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                e.printStackTrace();
-            }
-        });
-        final DocumentReference document = Firestore.getCollectionUser().document();
-        UserModel user = new UserModel();
-        user.setId(document.getId());
-        document.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                e.printStackTrace();
-            }
-        });
+//        FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password)
+//                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+//                    @Override
+//                    public void onSuccess(AuthResult authResult) {
+//                        goToMainActivity();
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                e.printStackTrace();
+//            }
+//        });
+//        final DocumentReference document = Firestore.getCollectionUser().document();
+//        UserModel user = new UserModel();
+//        user.setId(document.getId());
+//        document.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+//            @Override
+//            public void onSuccess(Void aVoid) {
+//
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                e.printStackTrace();
+//            }
+//        });
+        goToMainActivity();
     }
 
     private void goToMainActivity(){

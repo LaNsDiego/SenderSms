@@ -18,6 +18,7 @@ public abstract class RecyclerBuilder {
                 recycler.getContext(),
                 llms.getOrientation()
         );
+        recycler.setHasFixedSize(true);
         recycler.addItemDecoration(dividerItemDecoration);
         recycler.setLayoutManager(llms);
         recycler.setAdapter(adapter);

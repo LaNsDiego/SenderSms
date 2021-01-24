@@ -31,6 +31,7 @@ import com.example.sendersms.kardex.KardexAdapter;
 import com.example.sendersms.kardex.KardexModel;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -45,7 +46,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class CampainFragment extends Fragment {
-
+    List<ContactModel> listContact;
     static {
         System.setProperty(
                 "org.apache.poi.javax.xml.stream.XMLInputFactory",
@@ -63,11 +64,10 @@ public class CampainFragment extends Fragment {
 
     private static final int RESULT_OK = 25;
     private static final int REQUEST_CODE_XLSX = 10;
-    private TextView textView;
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 100;
     private static final String TAG = "FF";
     private View root;
-    EditText edtPhoneNumber , edtMessage;
+    TextInputEditText tieMessageCampain;
     Uri uriXlsx;
     @Override
     public View onCreateView(
@@ -76,30 +76,17 @@ public class CampainFragment extends Fragment {
     ) {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_campain, container, false);
-        textView = root.findViewById(R.id.textview);
-        edtMessage =  root.findViewById(R.id.edt_message);
+        tieMessageCampain = root.findViewById(R.id.tie_message_campain);
         ExtendedFloatingActionButton fabCargarArchivo = root.findViewById(R.id.fab_cargar_archivo);
         root.findViewById(R.id.btn_send_campain).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                NavHostFragment.findNavController(CampainFragment.this)
 //                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-                smsSendMessage(edtPhoneNumber.getText().toString() , edtMessage.getText().toString());
+                startCampain();
             }
         });
-
-        List<ContactModel> listContact;
         listContact = new ArrayList<>();
-        listContact.add(new ContactModel());
-        listContact.add(new ContactModel());
-        listContact.add(new ContactModel());
-        listContact.add(new ContactModel());
-        listContact.add(new ContactModel());
-        listContact.add(new ContactModel());
-        ContactAdapter adapterContact = new ContactAdapter(listContact);
-        RecyclerView recyclerContact = root.findViewById(R.id.recycler_contact);
-        RecyclerBuilder.build(recyclerContact,adapterContact);
-
         fabCargarArchivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,6 +116,18 @@ public class CampainFragment extends Fragment {
         }
     }
 
+    private void renderListContact(List<ContactModel> list){
+        ContactAdapter adapterContact = new ContactAdapter(list);
+        RecyclerView recyclerContact = root.findViewById(R.id.recycler_contact);
+        RecyclerBuilder.build(recyclerContact,adapterContact);
+    }
+
+    private void startCampain(){
+        for(ContactModel contact : listContact){
+            smsSendMessage(contact.getNumberPhone(),tieMessageCampain.getText().toString());
+        }
+        Toast.makeText(getContext(), "Mensajes enviados", Toast.LENGTH_SHORT).show();
+    }
     public void smsSendMessage(String phoneNumber , String mensaje) {
 
         SmsManager
@@ -152,30 +151,24 @@ public class CampainFragment extends Fragment {
             // We now need something to iterate through the cells.
             Iterator<Row> rowIter = mySheet.rowIterator();
             int rowno =0;
-            textView.append("\n");
             while (rowIter.hasNext()) {
-                Log.e(TAG, " row no "+ rowno );
                 XSSFRow myRow = (XSSFRow) rowIter.next();
                 if(rowno !=0) {
                     Iterator<Cell> cellIter = myRow.cellIterator();
                     int colno =0;
-                    String sno="", date="", det="";
                     while (cellIter.hasNext()) {
                         XSSFCell myCell = (XSSFCell) cellIter.next();
                         if (colno==0){
-                            sno = myCell.toString();
-                        }else if (colno==1){
-                            date = myCell.toString();
-                        }else if (colno==2){
-                            det = myCell.toString();
+                            ContactModel contact = new ContactModel();
+                            contact.setNumberPhone(myCell.toString());
+                            listContact.add(contact);
                         }
                         colno++;
-                        Log.e(TAG, " Index :" + myCell.getColumnIndex() + " -- " + myCell.toString());
                     }
-                    textView.append( sno + " -- "+ date+ "  -- "+ det+"\n");
                 }
                 rowno++;
             }
+            renderListContact(listContact);
         } catch (Exception e) {
             Log.e(TAG, "error "+ e.toString());
         }
