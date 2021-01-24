@@ -14,11 +14,11 @@ public abstract class Firestore {
 
     public static FirebaseFirestore getDb(){
         if(db == null){
-            FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-                    .setPersistenceEnabled(true)
-                    .build();
+//            FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+//                    .setPersistenceEnabled(true)
+//                    .build();
             db = FirebaseFirestore.getInstance();
-            db.setFirestoreSettings(settings);
+//            db.setFirestoreSettings(settings);
         }
         return db;
     }

@@ -1,6 +1,6 @@
 package com.example.sendersms.sell;
 
-import com.example.sendersms.ventadetail.VentaDetailModel;
+import com.example.sendersms.selldetail.SellDetailModel;
 
 import java.sql.Date;
 import java.util.List;
@@ -12,5 +12,5 @@ public class SellModel {
     private Date fechaRegistro;
     private String userId;
     private double total;
-    private List<VentaDetailModel> listDetail;
+    private List<SellDetailModel> listDetail;
 }

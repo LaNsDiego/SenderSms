@@ -14,8 +14,10 @@ public abstract class RecyclerBuilder {
     ){
         LinearLayoutManager llms = new LinearLayoutManager(recycler.getContext());
         llms.setOrientation(LinearLayoutManager.VERTICAL);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recycler.getContext(),
-                llms.getOrientation());
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(
+                recycler.getContext(),
+                llms.getOrientation()
+        );
         recycler.addItemDecoration(dividerItemDecoration);
         recycler.setLayoutManager(llms);
         recycler.setAdapter(adapter);

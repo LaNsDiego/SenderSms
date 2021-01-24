@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1069236116050",
+    "project_id": "distb-c0c11",
+    "storage_bucket": "distb-c0c11.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1069236116050:android:7fa6679ec061069be05d8b",
+        "android_client_info": {
+          "package_name": "com.example.sendersms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1069236116050-kp5oiu9jto0bdkm58r17cocatop2s5ef.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz-ja2x8Xu51-TAwRaFrn11B6ku2IdqMQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1069236116050-kp5oiu9jto0bdkm58r17cocatop2s5ef.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

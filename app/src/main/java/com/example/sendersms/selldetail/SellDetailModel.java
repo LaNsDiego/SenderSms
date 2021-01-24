@@ -1,6 +1,6 @@
-package com.example.sendersms.ventadetail;
+package com.example.sendersms.selldetail;
 
-public class VentaDetailModel {
+public class SellDetailModel {
 
     //Detalle
     private String id;
