@@ -30,6 +30,11 @@ public class KardexAdapter extends RecyclerView.Adapter<KardexHolder> {
     @Override
     public void onBindViewHolder(@NonNull KardexHolder holder, int position) {
         final KardexModel objKardex = listKardex.get(position);
+        holder.txvPeriod.setText(objKardex.getPeriodo());
+        holder.txvDescription.setText(objKardex.getDescripción());
+        holder.txvEntity.setText(objKardex.getRazonSocial());
+        holder.txvRuc.setText(objKardex.getRuc());
+        holder.txvUnit.setText(objKardex.getCodigoUnidad());
         holder.itemKardex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

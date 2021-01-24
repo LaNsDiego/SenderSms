@@ -23,11 +23,19 @@ public abstract class Firestore {
         return db;
     }
 
-    //TABLA USUARIO
+    //COLECCION USUARIO
     public static CollectionReference getCollectionUser() {
         if(collectionUser == null){
             collectionUser = getDb().collection("users");
         }
         return collectionUser;
+    }
+
+    //COLECCION KARDEX
+    public static CollectionReference getCollectionKardex() {
+        if(collectionKardex == null){
+            collectionKardex = getDb().collection("kardex");
+        }
+        return collectionKardex;
     }
 }

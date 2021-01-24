@@ -2,9 +2,10 @@ package com.example.sendersms.kardex;
 
 import com.example.sendersms.kardexdetail.KardexDetailModel;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class KardexModel {
+public class KardexModel implements Serializable {
     private String id;
     private String periodo;
     private String razonSocial;

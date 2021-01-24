@@ -54,6 +54,9 @@
         <action
             android:id="@+id/action_detail_kardex_to_kardex"
             app:destination="@id/nav_kardex" />
+        <action
+            android:id="@+id/action_detail_kardex_to_new_detail_kardex"
+            app:destination="@id/nav_new_detail_kardex" />
     </fragment>
 
     <fragment
@@ -61,6 +64,14 @@
         android:name="com.example.sendersms.views.sell.SellFragment"
         android:label="@string/sell_title"
         tools:layout="@layout/fragment_sell">
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_new_detail_kardex"
+        android:name="com.example.sendersms.views.kardex.NewDetailKardexFragment"
+        android:label="@string/new_detail_kardex_title"
+        tools:layout="@layout/fragment_new_detail_kardex">
+
     </fragment>
 
 <!--    <fragment-->

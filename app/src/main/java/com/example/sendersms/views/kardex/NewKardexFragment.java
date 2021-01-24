@@ -2,13 +2,25 @@ package com.example.sendersms.views.kardex;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 import com.example.sendersms.R;
+import com.example.sendersms.firebase.Firestore;
+import com.example.sendersms.kardex.KardexModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.MaterialAutoCompleteTextView;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.firestore.DocumentReference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,50 +29,72 @@ import com.example.sendersms.R;
  */
 public class NewKardexFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    View root;
+    MaterialAutoCompleteTextView matUnit,matPeriod;
+    TextInputEditText tieEntity,tieDescription,tieRuc;
+    MaterialButton btnCreate;
     public NewKardexFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NewKardexFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static NewKardexFragment newInstance(String param1, String param2) {
         NewKardexFragment fragment = new NewKardexFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_kardex, container, false);
+        root = inflater.inflate(R.layout.fragment_new_kardex, container, false);
+        matUnit = root.findViewById(R.id.mat_unit);
+        matPeriod = root.findViewById(R.id.mat_period);
+        tieEntity = root.findViewById(R.id.tie_entity);
+        tieDescription = root.findViewById(R.id.tie_description);
+        tieRuc = root.findViewById(R.id.tie_ruc);
+        btnCreate = root.findViewById(R.id.btn_create_new_kardex);
+        ArrayAdapter<String> periods = new ArrayAdapter<>(root.getContext(),R.layout.support_simple_spinner_dropdown_item);
+        periods.add("2021-I");
+        periods.add("2021-II");
+        matPeriod.setAdapter(periods);
+        ArrayAdapter<String> units = new ArrayAdapter<>(root.getContext(),R.layout.support_simple_spinner_dropdown_item);
+        units.add("Unidad");
+        units.add("Kg");
+        matUnit.setAdapter(units);
+        btnCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createKardex();
+            }
+        });
+
+        return root;
+    }
+
+    private void createKardex(){
+        DocumentReference newDocKardex = Firestore.getCollectionKardex().document();
+        KardexModel objNewKardex = new KardexModel();
+        objNewKardex.setId(newDocKardex.getId());
+        objNewKardex.setAlmacenId("1");
+        objNewKardex.setCodigoUnidad(matUnit.getText().toString());
+        objNewKardex.setDescripción(tieDescription.getText().toString());
+        objNewKardex.setRuc(tieRuc.getText().toString());
+        objNewKardex.setPeriodo(matPeriod.getText().toString());
+        objNewKardex.setAddress("Av. Bolognesi 1350");
+        objNewKardex.setRazonSocial(tieEntity.getText().toString());
+        objNewKardex.setLatitude("0");
+        objNewKardex.setLongitude("0");
+        newDocKardex.set(objNewKardex).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Navigation.findNavController(root).navigate(R.id.nav_kardex);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+
     }
 }
