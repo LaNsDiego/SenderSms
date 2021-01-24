@@ -17,7 +17,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_baseline_person_outline_24"/>
+                app:srcCompat="@drawable/ic_baseline_person_24"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_outline_local_phone_24"/>
+                app:srcCompat="@drawable/ic_baseline_local_phone_24"/>
             <TextView
                 android:id="@+id/txv_phone_number_contact"
                 android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_outline_near_me_24"/>
+                app:srcCompat="@drawable/ic_baseline_near_me_24"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
