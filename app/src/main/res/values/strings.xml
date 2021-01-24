@@ -30,4 +30,5 @@
     <string name="menu_sell">Catalogo</string>
     <string name="sell_title">Catalogo</string>
     <string name="label_s1_phone_number">Enviaremos un SMS a tu número telefónico</string>
+    <string name="label_s2_dni">Ingrese su numero de DNI para validar su información</string>
 </resources>
