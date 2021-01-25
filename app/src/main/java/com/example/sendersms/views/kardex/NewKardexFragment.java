@@ -92,7 +92,7 @@ public class NewKardexFragment extends Fragment {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-
+                e.printStackTrace();
             }
         });
 

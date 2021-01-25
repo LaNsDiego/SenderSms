@@ -16,6 +16,7 @@
         android:hint="Tipo de comprobante">
 
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/mat_type_proof"
             android:inputType="none"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -34,6 +35,7 @@
             android:hint="Serie">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tie_serie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -46,6 +48,7 @@
             android:hint="Numero de comprobante">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tie_number_proof"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -59,6 +62,7 @@
         android:hint="Tipo operación">
 
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/mat_type_operation"
             android:inputType="none"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -72,6 +76,7 @@
         android:hint="Cantidad">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tie_quantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -83,6 +88,7 @@
         android:hint="Precio unitario">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tie_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -95,13 +101,15 @@
         android:hint="Subtotal">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tie_subtotal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_create_new_detail_kardex"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Realizar operación"/>
+        android:text="Crear"/>
 
 </LinearLayout>
