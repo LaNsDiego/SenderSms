@@ -40,27 +40,31 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class CampainFragment extends Fragment {
     List<ContactModel> listContact;
-    static {
-        System.setProperty(
-                "org.apache.poi.javax.xml.stream.XMLInputFactory",
-                "com.fasterxml.aalto.stax.InputFactoryImpl"
-        );
-        System.setProperty(
-                "org.apache.poi.javax.xml.stream.XMLOutputFactory",
-                "com.fasterxml.aalto.stax.OutputFactoryImpl"
-        );
-        System.setProperty(
-                "org.apache.poi.javax.xml.stream.XMLEventFactory",
-                "com.fasterxml.aalto.stax.EventFactoryImpl"
-        );
-    }
+//    static {
+//        System.setProperty(
+//                "org.apache.poi.javax.xml.stream.XMLInputFactory",
+//                "com.fasterxml.aalto.stax.InputFactoryImpl"
+//        );
+//        System.setProperty(
+//                "org.apache.poi.javax.xml.stream.XMLOutputFactory",
+//                "com.fasterxml.aalto.stax.OutputFactoryImpl"
+//        );
+//        System.setProperty(
+//                "org.apache.poi.javax.xml.stream.XMLEventFactory",
+//                "com.fasterxml.aalto.stax.EventFactoryImpl"
+//        );
+//    }
 
     private static final int RESULT_OK = 25;
     private static final int REQUEST_CODE_XLSX = 10;
@@ -91,8 +95,8 @@ public class CampainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-//                intent.setType("application/xlsx");
-                intent.setType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+                intent.setType("text/plain");
+//                intent.setType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
                 startActivityForResult(intent, REQUEST_CODE_XLSX);
             }
         });
@@ -138,40 +142,51 @@ public class CampainFragment extends Fragment {
     }
 
     public void readExcelFileFromAssets(Uri uriXlsx) {
+//        try {
+
+//          InputStream stream = getContext().getContentResolver().openInputStream(uriXlsx);
+
+//            // Create a workbook using the File System
+//            XSSFWorkbook myWorkBook = new XSSFWorkbook (stream);
+//
+//            // Get the first sheet from workbook
+//            XSSFSheet mySheet = myWorkBook.getSheetAt(0);
+//
+//            // We now need something to iterate through the cells.
+//            Iterator<Row> rowIter = mySheet.rowIterator();
+//            int rowno =0;
+//            while (rowIter.hasNext()) {
+//                XSSFRow myRow = (XSSFRow) rowIter.next();
+//                if(rowno !=0) {
+//                    Iterator<Cell> cellIter = myRow.cellIterator();
+//                    int colno =0;
+//                    while (cellIter.hasNext()) {
+//                        XSSFCell myCell = (XSSFCell) cellIter.next();
+//                        if (colno==0){
+//                            ContactModel contact = new ContactModel();
+//                            contact.setNumberPhone(myCell.toString());
+//                            listContact.add(contact);
+//                        }
+//                        colno++;
+//                    }
+//                }
+//                rowno++;
+//            }
+
         try {
-
           InputStream stream = getContext().getContentResolver().openInputStream(uriXlsx);
-
-            // Create a workbook using the File System
-            XSSFWorkbook myWorkBook = new XSSFWorkbook (stream);
-
-            // Get the first sheet from workbook
-            XSSFSheet mySheet = myWorkBook.getSheetAt(0);
-
-            // We now need something to iterate through the cells.
-            Iterator<Row> rowIter = mySheet.rowIterator();
-            int rowno =0;
-            while (rowIter.hasNext()) {
-                XSSFRow myRow = (XSSFRow) rowIter.next();
-                if(rowno !=0) {
-                    Iterator<Cell> cellIter = myRow.cellIterator();
-                    int colno =0;
-                    while (cellIter.hasNext()) {
-                        XSSFCell myCell = (XSSFCell) cellIter.next();
-                        if (colno==0){
-                            ContactModel contact = new ContactModel();
-                            contact.setNumberPhone(myCell.toString());
-                            listContact.add(contact);
-                        }
-                        colno++;
-                    }
-                }
-                rowno++;
+            BufferedReader br = new BufferedReader(new InputStreamReader(stream));
+            String line;
+            while ((line = br.readLine()) != null) {
+                ContactModel contact = new ContactModel();
+                contact.setNumberPhone(line.trim());
+                listContact.add(contact);
             }
             renderListContact(listContact);
-        } catch (Exception e) {
-            Log.e(TAG, "error "+ e.toString());
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
     }
 
     @Override
