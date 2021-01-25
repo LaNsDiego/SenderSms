@@ -14,6 +14,6 @@ public class SellHolder extends RecyclerView.ViewHolder {
     FloatingActionButton btnAddProduct;
     public SellHolder(@NonNull View itemView) {
         super(itemView);
-        btnAddProduct = itemView.findViewById(R.id.btn_add_product);
+//        btnAddProduct = itemView.findViewById(R.id.btn_add_product);
     }
 }

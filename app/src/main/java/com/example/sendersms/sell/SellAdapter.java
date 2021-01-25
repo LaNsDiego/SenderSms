@@ -33,12 +33,12 @@ public class SellAdapter extends RecyclerView.Adapter<SellHolder> {
     @Override
     public void onBindViewHolder(@NonNull SellHolder holder, int position) {
         final ProductModel objProduct = listProduct.get(position);
-        holder.btnAddProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onClickItem(objProduct);
-            }
-        });
+//        holder.btnAddProduct.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                listener.onClickItem(objProduct);
+//            }
+//        });
     }
 
     @Override

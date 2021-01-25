@@ -29,7 +29,7 @@ public abstract class RecyclerBuilder {
             RecyclerView.Adapter adapter,
             int countGrid
     ){
-        GridLayoutManager glm = new GridLayoutManager(recycler.getContext(),countGrid);
+        GridLayoutManager glm = new GridLayoutManager(recycler.getContext(),countGrid,GridLayoutManager.VERTICAL ,false);
         recycler.setLayoutManager(glm);
         recycler.setAdapter(adapter);
     }
