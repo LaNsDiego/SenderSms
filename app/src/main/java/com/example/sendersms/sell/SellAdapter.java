@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sendersms.R;
-import com.example.sendersms.kardex.KardexHolder;
 import com.example.sendersms.product.ProductModel;
 
 import java.util.List;
@@ -27,7 +26,7 @@ public class SellAdapter extends RecyclerView.Adapter<SellHolder> {
     @NonNull
     @Override
     public SellHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view  = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product_sell, parent, false);
+        View view  = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product_sbifri, parent, false);
         return new SellHolder(view);
     }
 
