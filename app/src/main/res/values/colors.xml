@@ -3,4 +3,9 @@
     <color name="primaryColor">#6200EE</color>
     <color name="primaryDarkColor">#3700B3</color>
     <color name="secondaryColor">#03DAC5</color>
+    <color name="valor">#FF0000</color>
+    <color name="verde">#009688</color>
+    <color name="amarillo">#FFC107</color>
+
+
 </resources>
