@@ -73,6 +73,16 @@
         tools:layout="@layout/fragment_new_detail_kardex">
 
     </fragment>
+    <fragment
+        android:id="@+id/nav_catalogo_client_final"
+        android:name="com.example.sendersms.views.catalogo_Client_Final"
+        android:label="@string/catalogoBayron_title"
+        tools:layout="@layout/fragment_catalogo__client__final">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/nav_kardex" />
+    </fragment>
 
 <!--    <fragment-->
 <!--        android:id="@+id/nav_mi_id"-->

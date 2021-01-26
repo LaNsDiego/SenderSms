@@ -32,4 +32,5 @@
     <string name="label_s1_phone_number">Enviaremos un SMS a tu número telefónico</string>
     <string name="label_s2_dni">Ingrese su numero de DNI para validar su información</string>
     <string name="new_detail_kardex_title">Nuevo Movimiento</string>
+    <string name="catalogoBayron_title">catalogoBayron_title</string>
 </resources>
