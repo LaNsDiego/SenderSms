@@ -24,6 +24,10 @@
             android:id="@+id/nav_mi_id"
             android:icon="@drawable/ic_baseline_receipt_24"
             android:title="Mi Fragmento" />
+        <item
+            android:id="@+id/nav_catalogo_client_final"
+            android:icon="@drawable/ic_baseline_receipt_24"
+            android:title="@string/catalogoBayron_title" />
     </group>
     <item android:title="Communicate">
         <menu>
