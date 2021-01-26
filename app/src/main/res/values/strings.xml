@@ -33,4 +33,6 @@
     <string name="label_s2_dni">Ingrese su numero de DNI para validar su información</string>
     <string name="new_detail_kardex_title">Nuevo Movimiento</string>
     <string name="catalogoBayron_title">catalogoBayron_title</string>
+    <string name="channel_name">CHANNEL_GLOBAL</string>
+    <string name="channel_description">Canal global</string>
 </resources>

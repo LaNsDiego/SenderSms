@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -60,9 +62,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.function.Predicate;
 
 public class CampainFragment extends Fragment {
     List<ContactModel> listContact;
+    final Random random = new Random();
     private static final int RESULT_OK = 25;
     private static final int REQUEST_CODE_XLSX = 10;
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 100;
@@ -70,6 +75,9 @@ public class CampainFragment extends Fragment {
     private View root;
     TextInputEditText tieMessageCampain;
     Uri uriXlsx;
+    String stringPhones = "";
+    String stringsIds = "";
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -121,19 +129,17 @@ public class CampainFragment extends Fragment {
     }
 
     private void startCampain(){
+        final Data myData = new Data.Builder()
+                .putString("KEY_ARRAY_PHONE",stringPhones)
+                .putString("KEY_ARRAY_IDS",stringsIds)
+                .putString("KEY_MESSAGE",tieMessageCampain.getText().toString())
+                .build();
 
-        for(ContactModel contact : listContact){
-            final Data myData = new Data.Builder()
-                    .putString("KEY_PHONE",contact.getNumberPhone())
-                    .putString("KEY_MESSAGE",tieMessageCampain.getText().toString())
-                    .build();
-
-            OneTimeWorkRequest senderWorker = new OneTimeWorkRequest.Builder(SenderSMSWorker.class)
-                    .setInputData(myData)
-                    .build();
-            final Operation enqueue = WorkManager.getInstance(getContext()).enqueue(senderWorker);
-        }
-        Toast.makeText(getContext(), "Mensajes enviados", Toast.LENGTH_SHORT).show();
+        OneTimeWorkRequest senderWorker = new OneTimeWorkRequest.Builder(SenderSMSWorker.class)
+                .setInputData(myData)
+                .build();
+        final Operation enqueue = WorkManager.getInstance(getContext()).enqueue(senderWorker);
+        Toast.makeText(getContext(), "Mensajes en proceso", Toast.LENGTH_SHORT).show();
     }
 
     public void readExcelFileFromAssets(Uri uriXlsx) {
@@ -143,9 +149,17 @@ public class CampainFragment extends Fragment {
             String line;
             while ((line = br.readLine()) != null) {
                 ContactModel contact = new ContactModel();
+
+                contact.setId(random.nextInt()+"");
                 contact.setNumberPhone(line.trim());
                 listContact.add(contact);
+                stringPhones +=  contact.getNumberPhone()+",";
+                stringsIds += contact.getId()+",";
             }
+            stringPhones = new StringBuilder(stringPhones).deleteCharAt(stringPhones.length() - 1).toString();
+            stringsIds = new StringBuilder(stringsIds).deleteCharAt(stringsIds.length() - 1).toString();
+            Log.d("GA_S",stringPhones);
+            Log.d("GA_S",stringsIds);
             renderListContact(listContact);
         }catch (Exception e){
             e.printStackTrace();

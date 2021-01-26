@@ -20,6 +20,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
@@ -47,6 +48,10 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     // Worker
     implementation "androidx.work:work-runtime:$work_version"
+
+    def solidVersion = '2.0.3'
+    implementation "info.android15.solid:streams:$solidVersion"
+    implementation "info.android15.solid:collections:$solidVersion"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
