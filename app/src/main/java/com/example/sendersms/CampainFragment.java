@@ -1,7 +1,12 @@
 package com.example.sendersms;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,11 +26,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.Operation;
+import androidx.work.WorkManager;
+import androidx.work.WorkerParameters;
 
 import 	android.telephony.SmsManager;
 
 import com.example.sendersms.contact.ContactAdapter;
 import com.example.sendersms.contact.ContactModel;
+import com.example.sendersms.contact.SenderSMSWorker;
 import com.example.sendersms.helpers.RecyclerBuilder;
 import com.example.sendersms.kardex.KardexAdapter;
 import com.example.sendersms.kardex.KardexModel;
@@ -48,24 +59,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class CampainFragment extends Fragment {
     List<ContactModel> listContact;
-//    static {
-//        System.setProperty(
-//                "org.apache.poi.javax.xml.stream.XMLInputFactory",
-//                "com.fasterxml.aalto.stax.InputFactoryImpl"
-//        );
-//        System.setProperty(
-//                "org.apache.poi.javax.xml.stream.XMLOutputFactory",
-//                "com.fasterxml.aalto.stax.OutputFactoryImpl"
-//        );
-//        System.setProperty(
-//                "org.apache.poi.javax.xml.stream.XMLEventFactory",
-//                "com.fasterxml.aalto.stax.EventFactoryImpl"
-//        );
-//    }
-
     private static final int RESULT_OK = 25;
     private static final int REQUEST_CODE_XLSX = 10;
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 100;
@@ -85,8 +82,6 @@ public class CampainFragment extends Fragment {
         root.findViewById(R.id.btn_send_campain).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                NavHostFragment.findNavController(CampainFragment.this)
-//                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
                 startCampain();
             }
         });
@@ -96,7 +91,6 @@ public class CampainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("text/plain");
-//                intent.setType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
                 startActivityForResult(intent, REQUEST_CODE_XLSX);
             }
         });
@@ -127,52 +121,22 @@ public class CampainFragment extends Fragment {
     }
 
     private void startCampain(){
+
         for(ContactModel contact : listContact){
-            smsSendMessage(contact.getNumberPhone(),tieMessageCampain.getText().toString());
+            final Data myData = new Data.Builder()
+                    .putString("KEY_PHONE",contact.getNumberPhone())
+                    .putString("KEY_MESSAGE",tieMessageCampain.getText().toString())
+                    .build();
+
+            OneTimeWorkRequest senderWorker = new OneTimeWorkRequest.Builder(SenderSMSWorker.class)
+                    .setInputData(myData)
+                    .build();
+            final Operation enqueue = WorkManager.getInstance(getContext()).enqueue(senderWorker);
         }
         Toast.makeText(getContext(), "Mensajes enviados", Toast.LENGTH_SHORT).show();
     }
-    public void smsSendMessage(String phoneNumber , String mensaje) {
-
-        SmsManager
-                .getDefault()
-                .sendTextMessage(phoneNumber, null,
-                        mensaje,
-                        null, null);
-    }
 
     public void readExcelFileFromAssets(Uri uriXlsx) {
-//        try {
-
-//          InputStream stream = getContext().getContentResolver().openInputStream(uriXlsx);
-
-//            // Create a workbook using the File System
-//            XSSFWorkbook myWorkBook = new XSSFWorkbook (stream);
-//
-//            // Get the first sheet from workbook
-//            XSSFSheet mySheet = myWorkBook.getSheetAt(0);
-//
-//            // We now need something to iterate through the cells.
-//            Iterator<Row> rowIter = mySheet.rowIterator();
-//            int rowno =0;
-//            while (rowIter.hasNext()) {
-//                XSSFRow myRow = (XSSFRow) rowIter.next();
-//                if(rowno !=0) {
-//                    Iterator<Cell> cellIter = myRow.cellIterator();
-//                    int colno =0;
-//                    while (cellIter.hasNext()) {
-//                        XSSFCell myCell = (XSSFCell) cellIter.next();
-//                        if (colno==0){
-//                            ContactModel contact = new ContactModel();
-//                            contact.setNumberPhone(myCell.toString());
-//                            listContact.add(contact);
-//                        }
-//                        colno++;
-//                    }
-//                }
-//                rowno++;
-//            }
-
         try {
           InputStream stream = getContext().getContentResolver().openInputStream(uriXlsx);
             BufferedReader br = new BufferedReader(new InputStreamReader(stream));
