@@ -6,6 +6,7 @@ public class ProductModel {
     private String numeroSerie;
     private String imei;
     private String tipoProducto;
+    private double price;
 
     public String getId() {
         return id;
@@ -45,5 +46,13 @@ public class ProductModel {
 
     public void setTipoProducto(String tipoProducto) {
         this.tipoProducto = tipoProducto;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

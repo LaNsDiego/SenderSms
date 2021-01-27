@@ -1,16 +1,20 @@
 package com.example.sendersms.kardexdetail;
 
+import com.example.sendersms.product.ProductModel;
+
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 public class KardexDetailModel implements Serializable {
     private String id;
+    private String kardexDetailId;
     private String tipoMovimiento;
     private String serie;
     private String numero;
     private Date fechaRegistro;
-    private double precioUnitario;
-    private double subTotal;
+    private List<ProductModel> products;
+
 
     public String getId() {
         return id;
@@ -18,6 +22,14 @@ public class KardexDetailModel implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getKardexDetailId() {
+        return kardexDetailId;
+    }
+
+    public void setKardexDetailId(String kardexDetailId) {
+        this.kardexDetailId = kardexDetailId;
     }
 
     public String getTipoMovimiento() {
@@ -52,19 +64,11 @@ public class KardexDetailModel implements Serializable {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public double getPrecioUnitario() {
-        return precioUnitario;
+    public List<ProductModel> getProducts() {
+        return products;
     }
 
-    public void setPrecioUnitario(double precioUnitario) {
-        this.precioUnitario = precioUnitario;
-    }
-
-    public double getSubTotal() {
-        return subTotal;
-    }
-
-    public void setSubTotal(double subTotal) {
-        this.subTotal = subTotal;
+    public void setProducts(List<ProductModel> products) {
+        this.products = products;
     }
 }

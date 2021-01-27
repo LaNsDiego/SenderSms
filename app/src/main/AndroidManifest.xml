@@ -35,10 +35,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".views.DetailProductActivity" />
-        <activity
-            android:name=".views.HistorialActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".views.DetalleKardexActivity" />
         <activity android:name=".views.ChatBotActivity"></activity>
         <activity
             android:name=".MainActivity"

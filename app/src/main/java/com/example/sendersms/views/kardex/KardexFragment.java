@@ -1,19 +1,12 @@
 package com.example.sendersms.views.kardex;
 
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sendersms.R;
@@ -22,12 +15,8 @@ import com.example.sendersms.helpers.RecyclerBuilder;
 import com.example.sendersms.kardex.KardexAdapter;
 import com.example.sendersms.kardex.KardexInterface;
 import com.example.sendersms.kardex.KardexModel;
-import com.example.sendersms.kardexdetail.KardexDetailAdapter;
-import com.example.sendersms.kardexdetail.KardexDetailModel;
-import com.example.sendersms.views.HistorialActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -62,7 +51,9 @@ public class KardexFragment extends Fragment implements KardexInterface.KardexIt
 
     @Override
     public void onClickItemKardex(KardexModel objKardex) {
-        Navigation.findNavController(root).navigate(R.id.nav_detail_kardex);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("objKardex",objKardex);
+        Navigation.findNavController(root).navigate(R.id.nav_detail_kardex,bundle);
     }
 
     private void render(List<KardexModel> list){
