@@ -75,9 +75,9 @@
     </fragment>
     <fragment
         android:id="@+id/nav_catalogo_client_final"
-        android:name="com.example.sendersms.views.catalogo_Client_Final"
+        android:name="com.example.sendersms.views.CatalogClientFragment"
         android:label="@string/catalogoBayron_title"
-        tools:layout="@layout/fragment_catalogo__client__final">
+        tools:layout="@layout/fragment_catalog_client">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
