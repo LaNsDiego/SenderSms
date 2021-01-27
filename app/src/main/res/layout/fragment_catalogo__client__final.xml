@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_marginBottom="12dp"
     android:layout_marginLeft="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,41 +39,16 @@
                     android:textAlignment="center"
                     android:padding="8dp"
                     android:textStyle="bold"
-                    android:text="Chip Bifri5" />
+                    android:text="Prepago Bitel" />
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:layout_gravity="left"
-                        android:layout_width="120dp"
+                        android:layout_width="200dp"
                         android:layout_height="180dp"
                         android:src="@drawable/mesa_de_trabajo__1" />
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_gravity="right"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:padding="10dp"
-                            android:src="@drawable/mesa_de_trabajo__1" />
-                        <ImageView
-                            android:layout_gravity="right"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:padding="10dp"
-                            android:src="@drawable/mesa_de_trabajo__1" />
-                        <ImageView
-                            android:layout_gravity="right"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:padding="10dp"
-                            android:src="@drawable/mesa_de_trabajo__1" />
-                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -77,70 +60,56 @@
                     android:layout_height="wrap_content"
 
                     android:gravity="right"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <!--                    <TextView-->
-                        <!--                        android:layout_weight="1"-->
-                        <!--                        android:textSize="18dp"-->
-                        <!--                        android:layout_gravity="center_vertical"-->
-                        <!--                        android:layout_width="wrap_content"-->
-                        <!--                        android:layout_height="wrap_content"-->
-                        <!--                        android:text="Cantidad"/>-->
+                        android:orientation="horizontal">
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:padding="8dp"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                            android:layout_width="match_parent"
-                            android:layout_weight="1"
-                            android:hint="Cantidad"
-                            android:layout_height="wrap_content">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/tie_cantidad"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-                        </com.google.android.material.textfield.TextInputLayout>
                         <LinearLayout
                             android:orientation="horizontal"
                             android:paddingLeft="8dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
-                            <TextView
-                                android:layout_weight="1"
-                                android:layout_gravity="center_vertical"
-                                android:textColor="@color/valor"
-                                android:textStyle="italic"
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="S/. 100.00"/>
+                                android:orientation="horizontal">
 
-                            <com.google.android.material.button.MaterialButton
-                                app:shapeAppearanceOverlay="@style/ShapeAppearance.MyApp.MediumComponent"
-                                android:layout_width="58dp"
-                                android:padding="4dp"
-                                app:iconGravity="textEnd"
-                                android:layout_height="wrap_content"
-                                app:icon="@drawable/ic_baseline_shopping_cart_24"/>
-                            <!--                <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-                            <!--                    android:id="@+id/btn_add_product"-->
-                            <!--                    android:layout_width="wrap_content"-->
-                            <!--                    android:layout_height="wrap_content"-->
-                            <!--                    android:layout_gravity="center"-->
-                            <!--                    android:src="@drawable/ic_baseline_add_24"-->
-                            <!--                    app:fabSize="mini" />-->
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:padding="5dp"
+                                    android:src="@drawable/mesa_de_trabajo__1" />
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:padding="5dp"
+                                    android:src="@drawable/mesa_de_trabajo__1" />
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:padding="5dp"
+                                    android:src="@drawable/mesa_de_trabajo__1" />
+                            </LinearLayout>
+
+
                         </LinearLayout>
                     </LinearLayout>
 
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+
+        //parte 2
         <com.google.android.material.card.MaterialCardView
 
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -149,19 +118,13 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <ImageView
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/mesa_de_trabajo__1" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:textSize="12dp"
                     android:textAlignment="center"
                     android:padding="8dp"
                     android:textStyle="bold"
@@ -185,19 +148,25 @@
                         <!--                        android:layout_height="wrap_content"-->
                         <!--                        android:text="Cantidad"/>-->
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:padding="8dp"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_weight="1"
-                            android:hint="Cantidad"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/tie_cantidad"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-                        </com.google.android.material.textfield.TextInputLayout>
+                            <ImageView
+                                android:layout_gravity="left"
+                                android:layout_width="200dp"
+                                android:layout_height="180dp"
+                                android:src="@drawable/bifri" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="12dp"
+                            android:padding="8dp"
+                            android:textStyle="bold"
+                            android:text="Detalle del precio" />
                         <LinearLayout
                             android:orientation="horizontal"
                             android:paddingLeft="8dp"
@@ -235,4 +204,116 @@
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:text="Tipo Servicio: "/>
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Linea Nueva"/>
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Portabilidad"/>
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Migracion"/>
+
+
+
+        </com.google.android.material.chip.ChipGroup>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:text="Tipo Servicio: "/>
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Prepago"/>
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PostPago"/>
+
+
+        </com.google.android.material.chip.ChipGroup>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:text="Tipo Servicio: "/>
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="En tienda"/>
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delivery"/>
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:text="Tipo Servicio: "/>
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Ilimitado29.9"/>
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ilimitado39.9"/>
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ilimitado65.9"/>
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ilimitado105.9"/>
+
+        </com.google.android.material.chip.ChipGroup>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+</ScrollView>
 </LinearLayout>
