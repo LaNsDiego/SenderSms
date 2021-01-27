@@ -7,12 +7,12 @@ import java.util.List;
 
 public class KardexModel implements Serializable {
     private String id;
-    private String periodo;
-    private String razonSocial;
-    private String codigoUnidad;
+    private String period;
+    private String entity;
+    private String codeUnit;
     private String ruc;
-    private String descripción;
-    private String almacenId;
+    private String description;
+    private String warehouseId;
     private String latitude;
     private String longitude;
     private String address;
@@ -26,28 +26,28 @@ public class KardexModel implements Serializable {
         this.id = id;
     }
 
-    public String getPeriodo() {
-        return periodo;
+    public String getPeriod() {
+        return period;
     }
 
-    public void setPeriodo(String periodo) {
-        this.periodo = periodo;
+    public void setPeriod(String period) {
+        this.period = period;
     }
 
-    public String getRazonSocial() {
-        return razonSocial;
+    public String getEntity() {
+        return entity;
     }
 
-    public void setRazonSocial(String razonSocial) {
-        this.razonSocial = razonSocial;
+    public void setEntity(String entity) {
+        this.entity = entity;
     }
 
-    public String getCodigoUnidad() {
-        return codigoUnidad;
+    public String getCodeUnit() {
+        return codeUnit;
     }
 
-    public void setCodigoUnidad(String codigoUnidad) {
-        this.codigoUnidad = codigoUnidad;
+    public void setCodeUnit(String codeUnit) {
+        this.codeUnit = codeUnit;
     }
 
     public String getRuc() {
@@ -58,20 +58,20 @@ public class KardexModel implements Serializable {
         this.ruc = ruc;
     }
 
-    public String getDescripción() {
-        return descripción;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripción(String descripción) {
-        this.descripción = descripción;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getAlmacenId() {
-        return almacenId;
+    public String getWarehouseId() {
+        return warehouseId;
     }
 
-    public void setAlmacenId(String almacenId) {
-        this.almacenId = almacenId;
+    public void setWarehouseId(String warehouseId) {
+        this.warehouseId = warehouseId;
     }
 
     public String getLatitude() {

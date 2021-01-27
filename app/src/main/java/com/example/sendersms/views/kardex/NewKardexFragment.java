@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 
 import com.example.sendersms.R;
 import com.example.sendersms.firebase.Firestore;
@@ -75,13 +74,13 @@ public class NewKardexFragment extends Fragment {
         DocumentReference newDocKardex = Firestore.getCollectionKardex().document();
         KardexModel objNewKardex = new KardexModel();
         objNewKardex.setId(newDocKardex.getId());
-        objNewKardex.setAlmacenId("1");
-        objNewKardex.setCodigoUnidad(matUnit.getText().toString());
-        objNewKardex.setDescripción(tieDescription.getText().toString());
+        objNewKardex.setWarehouseId("1");
+        objNewKardex.setCodeUnit(matUnit.getText().toString());
+        objNewKardex.setDescription(tieDescription.getText().toString());
         objNewKardex.setRuc(tieRuc.getText().toString());
-        objNewKardex.setPeriodo(matPeriod.getText().toString());
+        objNewKardex.setPeriod(matPeriod.getText().toString());
         objNewKardex.setAddress("Av. Bolognesi 1350");
-        objNewKardex.setRazonSocial(tieEntity.getText().toString());
+        objNewKardex.setEntity(tieEntity.getText().toString());
         objNewKardex.setLatitude("0");
         objNewKardex.setLongitude("0");
         newDocKardex.set(objNewKardex).addOnSuccessListener(new OnSuccessListener<Void>() {
