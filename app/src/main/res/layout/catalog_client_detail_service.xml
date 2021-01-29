@@ -2,11 +2,16 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:background="@color/amarillo"
     android:layout_width="match_parent"
+    android:gravity="center"
     android:layout_height="match_parent">
 
     <TextView
         android:layout_width="match_parent"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/primaryColor"
         android:layout_height="wrap_content"
         android:textAllCaps="true"
         android:textAlignment="center"
@@ -24,7 +29,7 @@
     <TextView
         style="@style/TextAppearance.MaterialComponents.Headline4"
         android:textAlignment="center"
-        android:textColor="@color/verde"
+        android:textColor="@color/primaryColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
@@ -34,33 +39,36 @@
         android:layout_height="wrap_content"
         android:textAllCaps="true"
         android:textAlignment="center"
-        android:textColor="@color/verde"
+
         android:text="En alta velocidad"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
+
         android:textStyle="bold"
-        android:textColor="@color/verde"
+        android:textColor="@color/primaryColor"
         android:text="+Internet ilimitado (0.256Mbps y 0.128 Mbps)"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="Además  tendrás un descuento de 20% en tus paquetes TI por 6 meses."/>
+        android:text="* Además en portabilidad tendrás un descuento de 20% en tus paquetes TI por 6 meses."/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="true"
-        android:textColor="@color/verde"
+        android:textStyle="bold"
+        android:textColor="@color/primaryColor"
         android:textAlignment="center"
         android:text="Tus apps favoritas"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
@@ -80,19 +88,24 @@
         android:gravity="center"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_check_circle_24"/>
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:src="@drawable/facebook"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_check_circle_24"/>
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:src="@drawable/instagram"/>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:src="@drawable/gorjeo"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
@@ -112,19 +125,20 @@
         android:gravity="center"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_check_circle_24"/>
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:src="@drawable/whatsapp"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_check_circle_24"/>
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:src="@drawable/linea"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
@@ -144,13 +158,33 @@
         android:gravity="center"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
             android:src="@drawable/ic_baseline_check_circle_24"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_baseline_check_circle_24"/>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_baseline_check_circle_24"/>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_baseline_check_circle_24"/>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_baseline_check_circle_24"/>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_baseline_check_circle_24"/>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="20dp"
             android:src="@drawable/ic_baseline_check_circle_24"/>
     </LinearLayout>
 
