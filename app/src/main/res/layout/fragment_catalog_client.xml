@@ -13,6 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/amarillo"
             android:orientation="vertical">
 
             <LinearLayout
@@ -35,9 +36,10 @@
                             android:layout_height="wrap_content"
                             android:textSize="20dp"
                             android:textAlignment="center"
+                            android:textColor="@color/primaryColor"
                             android:padding="8dp"
                             android:textStyle="bold"
-                            android:text="Prepago Bitel" />
+                            android:text="Pre Bifri5" />
 
                         <ImageView
                             android:id="@+id/imv_catalog_client"
@@ -49,7 +51,7 @@
 
                         <TextView
                             style="@style/TextAppearance.MaterialComponents.Headline6"
-                            android:textColor="@color/verde"
+                            android:textColor="@color/valor"
                             android:textStyle="italic"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
