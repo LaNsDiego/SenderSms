@@ -74,15 +74,12 @@ public class NewKardexFragment extends Fragment {
         DocumentReference newDocKardex = Firestore.getCollectionKardex().document();
         KardexModel objNewKardex = new KardexModel();
         objNewKardex.setId(newDocKardex.getId());
-        objNewKardex.setWarehouseId("1");
+        objNewKardex.setStoreId("1");
         objNewKardex.setCodeUnit(matUnit.getText().toString());
         objNewKardex.setDescription(tieDescription.getText().toString());
         objNewKardex.setRuc(tieRuc.getText().toString());
         objNewKardex.setPeriod(matPeriod.getText().toString());
-        objNewKardex.setAddress("Av. Bolognesi 1350");
         objNewKardex.setEntity(tieEntity.getText().toString());
-        objNewKardex.setLatitude("0");
-        objNewKardex.setLongitude("0");
         newDocKardex.set(objNewKardex).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {

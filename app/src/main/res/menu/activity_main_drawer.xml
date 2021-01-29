@@ -28,6 +28,10 @@
             android:id="@+id/nav_catalogo_client_final"
             android:icon="@drawable/ic_baseline_receipt_24"
             android:title="@string/catalogoBayron_title" />
+        <item
+            android:id="@+id/nav_store"
+            android:icon="@drawable/ic_baseline_receipt_24"
+            android:title="@string/title_store" />
     </group>
     <item android:title="Communicate">
         <menu>

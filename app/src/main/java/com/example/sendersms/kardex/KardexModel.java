@@ -12,9 +12,7 @@ public class KardexModel implements Serializable {
     private String codeUnit;
     private String ruc;
     private String description;
-    private String warehouseId;
-    private String latitude;
-    private String longitude;
+    private String storeId;
     private String address;
     private List<KardexDetailModel> detail;
 
@@ -66,37 +64,14 @@ public class KardexModel implements Serializable {
         this.description = description;
     }
 
-    public String getWarehouseId() {
-        return warehouseId;
+    public String getStoreId() {
+        return storeId;
     }
 
-    public void setWarehouseId(String warehouseId) {
-        this.warehouseId = warehouseId;
+    public void setStoreId(String storeId) {
+        this.storeId = storeId;
     }
 
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public List<KardexDetailModel> getDetail() {
         return detail;

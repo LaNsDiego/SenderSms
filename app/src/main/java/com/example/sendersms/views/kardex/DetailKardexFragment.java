@@ -48,7 +48,7 @@ public class DetailKardexFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        KardexModel objKardex = (KardexModel) getArguments().getSerializable("objKardex");
+        final KardexModel objKardex = (KardexModel) getArguments().getSerializable("objKardex");
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_detail_kardex, container, false);
         tieDescription = root.findViewById(R.id.txv_description_detail);
@@ -60,7 +60,9 @@ public class DetailKardexFragment extends Fragment {
         fabNewDetailKardex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.nav_new_detail_kardex);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("objKardex",objKardex);
+                Navigation.findNavController(view).navigate(R.id.nav_new_detail_kardex,bundle);
             }
         });
         listKardexDetail = new ArrayList<>();

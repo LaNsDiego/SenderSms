@@ -84,6 +84,14 @@
             app:destination="@id/nav_kardex" />
     </fragment>
 
+    <fragment
+        android:id="@+id/nav_store"
+        android:name="com.example.sendersms.views.StoreFragment"
+        android:label="@string/title_store"
+        tools:layout="@layout/fragment_store">
+
+    </fragment>
+
 <!--    <fragment-->
 <!--        android:id="@+id/nav_mi_id"-->
 <!--        android:name="com.example.sendersms.views.sell.mi_fragmento_java"-->

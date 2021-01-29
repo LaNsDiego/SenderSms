@@ -35,4 +35,5 @@
     <string name="catalogoBayron_title">Catalogo ciente</string>
     <string name="channel_name">CHANNEL_GLOBAL</string>
     <string name="channel_description">Canal global</string>
+    <string name="title_store">Tiendas</string>
 </resources>

@@ -1,18 +1,19 @@
 package com.example.sendersms.kardexdetail;
 
 import com.example.sendersms.product.ProductModel;
+import com.google.firebase.firestore.ServerTimestamp;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 public class KardexDetailModel implements Serializable {
     private String id;
-    private String kardexDetailId;
-    private String tipoMovimiento;
+    private String typeOperation;
+    private String typeProof;
     private String serie;
-    private String numero;
-    private Date fechaRegistro;
+    private String numberProof;
+    private @ServerTimestamp Date createdAt;
     private List<ProductModel> products;
 
 
@@ -24,20 +25,12 @@ public class KardexDetailModel implements Serializable {
         this.id = id;
     }
 
-    public String getKardexDetailId() {
-        return kardexDetailId;
+    public String getTypeOperation() {
+        return typeOperation;
     }
 
-    public void setKardexDetailId(String kardexDetailId) {
-        this.kardexDetailId = kardexDetailId;
-    }
-
-    public String getTipoMovimiento() {
-        return tipoMovimiento;
-    }
-
-    public void setTipoMovimiento(String tipoMovimiento) {
-        this.tipoMovimiento = tipoMovimiento;
+    public void setTypeOperation(String typeOperation) {
+        this.typeOperation = typeOperation;
     }
 
     public String getSerie() {
@@ -48,20 +41,20 @@ public class KardexDetailModel implements Serializable {
         this.serie = serie;
     }
 
-    public String getNumero() {
-        return numero;
+    public String getNumberProof() {
+        return numberProof;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setNumberProof(String numberProof) {
+        this.numberProof = numberProof;
     }
 
-    public Date getFechaRegistro() {
-        return fechaRegistro;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public List<ProductModel> getProducts() {
@@ -70,5 +63,13 @@ public class KardexDetailModel implements Serializable {
 
     public void setProducts(List<ProductModel> products) {
         this.products = products;
+    }
+
+    public String getTypeProof() {
+        return typeProof;
+    }
+
+    public void setTypeProof(String typeProof) {
+        this.typeProof = typeProof;
     }
 }
